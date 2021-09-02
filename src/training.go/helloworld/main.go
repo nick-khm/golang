@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+
+	"helloworld.com/greetings/src/training.go/helloworld/input"
+)
 
 func main() {
-	fmt.Println("Hello Gophers!")
+	input.Mouse()
+	input.TotoMyFunc()
+	fmt.Println(strings.ToUpper("Hello Gophers!"))
 }
