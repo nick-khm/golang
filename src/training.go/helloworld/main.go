@@ -2,16 +2,30 @@ package main
 
 import (
 	"fmt"
-
-	"helloworld.com/greetings/src/training.go/helloworld/data"
 )
 
 func main() {
-	fmt.Println(data.Name, data.Age)
+	weekDay := 6 // 1 == Monday, 7 == Sunday
+	fmt.Printf("Day of the week=%d. What's for today?\n", weekDay)
 
-	if count := 12; count > 10 {
-		fmt.Printf("Counter is enough, = %d\n", count)
-	} else {
-		fmt.Printf("Counter is not enough, = %d\n", count)
+	switch weekDay {
+	case 1:
+		fmt.Println("Beginning of the week, let's go to work!")
+	case 3:
+		fmt.Println("Wednesday, the half is done!")
+	case 6, 7:
+		fmt.Println("It's the week-end!")
+	default:
+		fmt.Println("Nothing special about this day...")
+	}
+
+	hour := 20
+	switch {
+	case hour < 12:
+		fmt.Println("It's the morning!")
+	case hour >= 12 && hour < 18:
+		fmt.Println("It's the afternoon")
+	default:
+		fmt.Println("It's the evening")
 	}
 }
