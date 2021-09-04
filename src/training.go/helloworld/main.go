@@ -2,32 +2,28 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
-func printInfoParams(name string, age int, email string) {
-	fmt.Printf("Name=%s, age=%d, email=%s\n", name, age, email)
-}
-
-func avg(x, y float64) float64 {
-	return (x + y) / 2
-}
-
-func sumNamedReturn(x, y, z int) (sum int) {
-	sum = x + y + z
-	return sum
-}
-
-func sumNamedReturn2(x, y, z int) (sum int) {
-	sum = x + y + z
-	return
+func ToLowerStr(name string) (string, int) {
+	return strings.ToLower(name), len(name)
 }
 
 func main() {
-	printInfoParams("Bob", 20, "bob@t.com")
-	avgResult := avg(32, 34.3)
-	fmt.Printf("AVG result=%f\n", avgResult)
-	sum := sumNamedReturn(8, 32, 5)
-	fmt.Printf("Sum result=%d\n", sum)
-	sum2 := sumNamedReturn2(8, 32, 5)
-	fmt.Printf("Sum result=%d\n", sum2)
+
+	lowerName, len := ToLowerStr("ALICE")
+	fmt.Printf("%s (len=%d)\n", lowerName, len)
+
+	lowerName, len = ToLowerStr("JeelyBom")
+	fmt.Printf("%s (len=%d)\n", lowerName, len)
+
+	bobName, len := ToLowerStr("Bob")
+	fmt.Printf("%s (len=%d)\n", bobName, len)
+
+	_, len = ToLowerStr("Bob")
+	fmt.Printf("String length=%d)\n", len)
+
+	stringName, _ := ToLowerStr("Bob")
+	fmt.Printf("String name=%s\n", stringName)
+
 }
