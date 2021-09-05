@@ -11,19 +11,14 @@ func ToLowerStr(name string) (string, int) {
 
 func main() {
 
-	lowerName, len := ToLowerStr("ALICE")
-	fmt.Printf("%s (len=%d)\n", lowerName, len)
+	var names [3]string
+	fmt.Printf("names=%v (len=%v)\n", names, len(names))
 
-	lowerName, len = ToLowerStr("JeelyBom")
-	fmt.Printf("%s (len=%d)\n", lowerName, len)
+	names[0] = "Bob"
+	names[2] = "Alice"
 
-	bobName, len := ToLowerStr("Bob")
-	fmt.Printf("%s (len=%d)\n", bobName, len)
+	fmt.Printf("names=%v (len=%v)\n", names, len(names))
 
-	_, len = ToLowerStr("Bob")
-	fmt.Printf("String length=%d)\n", len)
-
-	stringName, _ := ToLowerStr("Bob")
-	fmt.Printf("String name=%s\n", stringName)
-
+	odds := [4]int{44, 8, 32}
+	fmt.Printf("odds=%v (len=%d)\n", odds, len(odds))
 }
