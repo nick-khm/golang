@@ -2,28 +2,42 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 )
 
-func readFile(filename string) (string, error) {
-	dat, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return "", err
-	}
-	if len(dat) == 0 {
-		// return "", errors.New("Empty content")
-		return "", fmt.Errorf("empty content (filename=%v)", filename)
-	}
+func start() {
+	fmt.Println("Start")
+}
 
-	return string(dat), nil
+func finish() {
+	fmt.Println("Finish")
 }
 
 func main() {
-	dat, err := readFile("test.txt")
-	if err != nil {
-		fmt.Printf("Error while reading file: %v\n", err)
-		return
+	start()
+	defer finish() // LIFO = Last In First Out
+	// when closing the CURRENT FUNCTION it will stock func to finish
+	// finish()
+	// Goodbye Bob
+	// Goodbye Alice
+	// Goodbye Bobette
+	// Goodbye John
+
+	names := []string{"Bob", "Alice", "Bobette", "John"}
+	for _, n := range names {
+		fmt.Printf("Hello %v\n", n)
+		defer fmt.Printf("Goodbye %v\n", n)
 	}
-	fmt.Println("File content:")
-	fmt.Println(dat)
+
+	/*
+		Start
+		Hello Bob
+		Hello Alice
+		Hello Bobette
+		Hello John
+		Goodbye John
+		Goodbye Bobette
+		Goodbye Alice
+		Goodbye Bob
+		Finish
+	*/
 }
